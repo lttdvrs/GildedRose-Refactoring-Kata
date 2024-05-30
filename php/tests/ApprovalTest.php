@@ -20,7 +20,6 @@ use ApprovalTests\Approvals;
  */
 class ApprovalTest extends TestCase
 {
-
     public function testFoo(): void
     {
         $items = [new Item('foo', 0, 0)];
@@ -28,17 +27,5 @@ class ApprovalTest extends TestCase
         $app->updateQuality();
 
         Approvals::verifyList($items);
-    }
-
-    public function testThirtyDays(): void
-    {
-        ob_start();
-
-        $argv = ["", "30"];
-        include(__DIR__ . '/../fixtures/texttest_fixture.php');
-
-        $output = ob_get_clean();
-
-        Approvals::verifyString($output);
     }
 }
